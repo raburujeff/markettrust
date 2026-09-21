@@ -20,14 +20,12 @@ export function Layout() {
             <NavLink to="/report" className={({ isActive }) => (isActive ? 'active' : undefined)}>
               Report
             </NavLink>
-            <NavLink
-              to="/cases"
-              className={({ isActive }) => (isActive ? 'active hide-sm' : 'hide-sm')}
-            >
+            <NavLink to="/cases" className={({ isActive }) => (isActive ? 'active' : undefined)}>
               Cases
             </NavLink>
             <NavLink to="/ask" className="nav-cta">
-              Try the demo
+              <span className="nav-cta-full">Try the demo</span>
+              <span className="nav-cta-short">Demo</span>
             </NavLink>
           </nav>
         </div>

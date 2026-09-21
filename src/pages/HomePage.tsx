@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { Reveal } from '../components/Reveal'
 
 export function HomePage() {
   return (
@@ -20,7 +21,7 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="section">
+      <Reveal className="section">
         <div className="shell">
           <p className="section-label">The problem</p>
           <h2>WhatsApp forwards are not civic infrastructure.</h2>
@@ -47,9 +48,9 @@ export function HomePage() {
             </article>
           </div>
         </div>
-      </section>
+      </Reveal>
 
-      <section className="section section-alt">
+      <Reveal className="section section-alt">
         <div className="shell">
           <p className="section-label">Who it’s for</p>
           <h2>The hustle economy — and those who protect it.</h2>
@@ -68,9 +69,9 @@ export function HomePage() {
             </article>
           </div>
         </div>
-      </section>
+      </Reveal>
 
-      <section className="section">
+      <Reveal className="section">
         <div className="shell">
           <p className="section-label">Why this exists</p>
           <h2>Chat that sounds sure isn’t always safe</h2>
@@ -93,12 +94,12 @@ export function HomePage() {
             </div>
           </div>
         </div>
-      </section>
+      </Reveal>
 
-      <section className="section section-alt">
+      <Reveal className="section section-alt">
         <div className="shell">
-          <p className="section-label">Hackathon tracks</p>
-          <h2>Cross-track on purpose.</h2>
+          <p className="section-label">What you can ask about</p>
+          <h2>Everyday civic friction</h2>
           <div className="tracks">
             <div className="track">
               <h3>Permits &amp; fees</h3>
@@ -114,9 +115,9 @@ export function HomePage() {
             </div>
           </div>
         </div>
-      </section>
+      </Reveal>
 
-      <section className="section">
+      <Reveal className="section">
         <div className="shell">
           <p className="section-label">How we keep it honest</p>
           <h2>Useful on a slow phone, careful with your tip</h2>
@@ -144,9 +145,9 @@ export function HomePage() {
             </Link>
           </div>
         </div>
-      </section>
+      </Reveal>
 
-      <section className="section section--next">
+      <Reveal className="section section--next">
         <div className="shell">
           <p className="section-label">What’s next</p>
           <h2>Meet people where they already ask</h2>
@@ -161,7 +162,7 @@ export function HomePage() {
             </Link>
           </div>
         </div>
-      </section>
+      </Reveal>
     </>
   )
 }

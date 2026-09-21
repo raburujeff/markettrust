@@ -60,9 +60,15 @@ export function AskPage() {
     },
   ])
   const bottomRef = useRef<HTMLDivElement>(null)
+  const threadRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: 'smooth' })
+    const thread = threadRef.current
+    if (!thread) return
+    thread.scrollTo({
+      top: thread.scrollHeight,
+      behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+    })
   }, [messages])
 
   useEffect(() => {
@@ -192,7 +198,7 @@ export function AskPage() {
             </div>
           </div>
 
-          <div className="chat-thread" aria-live="polite">
+          <div className="chat-thread" aria-live="polite" ref={threadRef}>
             {messages.map((msg) => (
               <div key={msg.id} className={`bubble ${msg.role}`}>
                 {msg.role === 'bot' && msg.trust ? (
