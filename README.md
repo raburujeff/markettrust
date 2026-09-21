@@ -38,7 +38,6 @@ Open the URL Vite prints (usually `http://localhost:5173`).
 |------|-----|
 | `FORM_SUMMARY.md` | Paste into the written summary field |
 | `MarketTrust-Pitch-Deck.pdf` | Pitch deck upload |
-| `DEMO_SCRIPT.md` | Record the demo video |
 
 ## Notes
 
