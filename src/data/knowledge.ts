@@ -1,12 +1,24 @@
 export type TrustLevel = 'verified' | 'check' | 'unclear'
 
+/** When the Kenya seed corpus was last reviewed for the PoC. */
+export const CORPUS_BUILT = '2026-09-21'
+
 export type KnowledgeEntry = {
   id: string
   title: string
+  /** Strong multi-word cues — preferred over single tokens */
+  phrases?: string[]
   keywords: string[]
+  /** If present in the query, this entry is a poor match */
+  negative?: string[]
   answer: string
+  /** Shorter answer for lower literacy / plain-language mode */
+  answerSimple?: string
   answerSw?: string
+  answerSwSimple?: string
   trust: TrustLevel
+  /** ISO date — when this entry was last checked against public sources */
+  updated: string
   sources: { label: string; url?: string; note?: string }[]
   nextSteps: string[]
   track: 'transparency' | 'safety' | 'stability'
@@ -20,22 +32,26 @@ export const KNOWLEDGE: KnowledgeEntry[] = [
   {
     id: 'sbb-permit',
     title: 'Single Business Permit (Nairobi)',
-    keywords: [
+    phrases: [
       'business permit',
       'single business permit',
-      'sbp',
-      'licence',
-      'license',
       'nairobi permit',
       'county permit',
-      'kibali',
-      'biashara',
+      'get a permit',
+      'need a permit',
     ],
+    keywords: ['sbp', 'licence', 'license', 'kibali', 'biashara', 'permit'],
+    negative: ['kra', 'tender', 'mpesa', 'm-pesa'],
     answer:
       'In Nairobi, most traders need a Single Business Permit (SBP) from Nairobi City County. Apply online via the county e-services portal, pay the fee for your business category, then display the permit at your premises. Fees vary by activity and size — do not pay “facilitators” who demand cash outside official channels.',
+    answerSimple:
+      'In Nairobi most traders need a Single Business Permit from the county. Apply and pay only on official county channels — not cash to facilitators.',
     answerSw:
       'Nairobi, wafanyibiashara wengi wanahitaji Single Business Permit (SBP) kutoka Nairobi City County. Omba mtandaoni kupitia e-services za kaunti, lipa ada rasmi, kisha weka kibali mahali pa biashara. Usilipe “wakala” wa fedha taslimu nje ya njia rasmi.',
+    answerSwSimple:
+      'Nairobi, wafanyibiashara wengi wanahitaji kibali cha biashara kutoka kaunti. Omba na lipa njia rasmi tu.',
     trust: 'verified',
+    updated: '2026-09-21',
     sources: [
       {
         label: 'Nairobi City County e-services',
@@ -57,14 +73,74 @@ export const KNOWLEDGE: KnowledgeEntry[] = [
     track: 'transparency',
   },
   {
+    id: 'kra-sms-scam',
+    title: 'Suspicious KRA SMS / refund text',
+    phrases: [
+      'kra text',
+      'kra sms',
+      'kra message',
+      'got a kra',
+      'received a kra',
+      'kra refund',
+      'kra owed',
+      'kra link',
+      'fake kra',
+      'kra phishing',
+      'message from kra',
+      'sms from kra',
+      'text from kra',
+    ],
+    keywords: ['sms', 'text', 'message', 'refund', 'owed', 'click', 'link', 'phishing', 'ujumbe'],
+    negative: ['register pin', 'create pin', 'get a pin', 'need a pin', 'how do i get'],
+    answer:
+      'Treat unexpected KRA texts with suspicion. KRA does not send random “you are owed a refund — click this link” or “pay a fee to unlock your PIN” messages. Do not tap links in the SMS. Open iTax yourself by typing itax.kra.go.ke in the browser (not from the text), or use the official KRA app / published contacts. If the message asks for PIN, password, ID photos, or M-Pesa to a personal number — it is a scam. Screenshot and report it.',
+    answerSimple:
+      'Unexpected KRA texts are often scams. Do not tap links. Open itax.kra.go.ke yourself. If they ask for PIN, password, or M-Pesa to a personal number — report it.',
+    answerSw:
+      'Ujumbe usiotarajiwa wa “KRA” huwa wa udanganyifu mara nyingi. KRA haitumi ujumbe wa “bonus/refund — bofya kiungo”. Usibofye kiungo. Fungua iTax mwenyewe kwa kuandika itax.kra.go.ke. Ukitakiwa PIN, nenosiri, au M-Pesa kwa nambari binafsi — ni udanganyifu. Piga picha na ripoti.',
+    answerSwSimple:
+      'Ujumbe wa KRA usiotarajiwa huwa udanganyifu. Usibofye kiungo. Fungua itax.kra.go.ke mwenyewe. Ukitakiwa PIN au M-Pesa binafsi — ripoti.',
+    trust: 'verified',
+    updated: '2026-09-21',
+    sources: [
+      { label: 'KRA iTax (type the URL yourself)', url: 'https://itax.kra.go.ke' },
+      { label: 'KRA official site', url: 'https://www.kra.go.ke', note: 'Use published contacts only' },
+    ],
+    nextSteps: [
+      'Do not click links or dial odd numbers from the SMS',
+      'Open itax.kra.go.ke yourself to check any real notices',
+      'Block/report the sender on your phone',
+      'File a MarketTrust tip with a screenshot (hide personal data)',
+    ],
+    track: 'safety',
+  },
+  {
     id: 'kra-pin',
     title: 'KRA PIN for a small business',
-    keywords: ['kra', 'pin', 'tax', 'vat', 'i-tax', 'usuru', 'kodi', 'tin'],
+    phrases: [
+      'kra pin',
+      'get a pin',
+      'need a pin',
+      'register pin',
+      'create pin',
+      'itax',
+      'i-tax',
+      'tax pin',
+      'kra for my stall',
+      'kra for my business',
+    ],
+    keywords: ['vat', 'usuru', 'kodi', 'tin', 'etims', 'withholding'],
+    negative: ['sms', 'text', 'message', 'refund', 'owed', 'got a kra', 'received a kra', 'link'],
     answer:
       'Every adult and registered business in Kenya needs a KRA PIN. Individuals register on iTax; companies get a PIN when incorporated. You use it for tax returns, withholding, and many licences. There is no fee to get a basic PIN — beware of WhatsApp “agents” selling fake PINs.',
+    answerSimple:
+      'You need a free KRA PIN on iTax for tax and many licences. Do not pay WhatsApp agents for a fake PIN.',
     answerSw:
       'Kila mtu mzima na biashara iliyosajiliwa Kenya inahitaji KRA PIN. Sajili kwenye iTax. Hakuna ada ya kupata PIN ya msingi — jihadhari na “mawakala” wa WhatsApp wanaouza PIN bandia.',
+    answerSwSimple:
+      'Unahitaji KRA PIN bure kwenye iTax. Usilipe mawakala wa WhatsApp kwa PIN bandia.',
     trust: 'verified',
+    updated: '2026-09-21',
     sources: [
       { label: 'KRA iTax', url: 'https://itax.kra.go.ke', note: 'Official registration and filing' },
       { label: 'KRA website', url: 'https://www.kra.go.ke' },
@@ -80,10 +156,13 @@ export const KNOWLEDGE: KnowledgeEntry[] = [
   {
     id: 'market-stall',
     title: 'Market stall / county market fees',
-    keywords: ['market', 'stall', 'soko', 'kibanda', 'county fee', 'hawk', 'hawker', 'sokoni'],
+    phrases: ['market fee', 'market fees', 'stall fee', 'unofficial fee', 'county fee'],
+    keywords: ['market', 'stall', 'soko', 'kibanda', 'hawk', 'hawker', 'sokoni', 'ada'],
+    negative: ['kra pin', 'tender', 'mpesa pin'],
     answer:
       'County markets usually require allocation from the market office plus daily or monthly fees set by the county. Fee schedules should be posted or available from the market superintendent. If someone demands “extra” to keep your stall, ask for an official receipt with the county stamp — and report unofficial collections.',
     trust: 'check',
+    updated: '2026-09-21',
     sources: [
       {
         label: 'Your county finance / markets department',
@@ -101,20 +180,21 @@ export const KNOWLEDGE: KnowledgeEntry[] = [
   {
     id: 'tender-scam',
     title: 'Government tender / supply scams',
-    keywords: [
-      'tender',
-      'procurement',
-      'supply',
-      'ppip',
-      'ifmis',
-      'contract',
-      'award',
-      'zabuni',
-      'scam',
+    phrases: [
+      'won a tender',
+      'tender award',
+      'commitment fee',
+      'bid bond',
+      'supply contract',
     ],
+    keywords: ['tender', 'procurement', 'supply', 'ppip', 'ifmis', 'award', 'zabuni', 'scam'],
+    negative: ['kra pin', 'business permit', 'market fee'],
     answer:
       'Real public tenders in Kenya are published on the Public Procurement Information Portal (PPIP) and often IFMIS. Nobody needs you to pay “commitment fees”, “bid bonds” to a personal M-Pesa, or send money to “unlock” an award. If a WhatsApp contact claims you won a tender you never bid for — treat it as a scam.',
+    answerSimple:
+      'Real tenders are on tenders.go.ke. Do not pay commitment fees to personal M-Pesa. If someone says you won a tender you never bid for — it is a scam.',
     trust: 'verified',
+    updated: '2026-09-21',
     sources: [
       { label: 'PPIP – Public Procurement Information Portal', url: 'https://tenders.go.ke' },
       { label: 'PPRA', url: 'https://ppra.go.ke', note: 'Public Procurement Regulatory Authority' },
@@ -130,10 +210,22 @@ export const KNOWLEDGE: KnowledgeEntry[] = [
   {
     id: 'mpesa-agent',
     title: 'Fake M-Pesa / till payment tricks',
-    keywords: ['m-pesa', 'mpesa', 'till', 'paybill', 'agent', 'reverse', 'otp', 'pin'],
+    phrases: [
+      'mpesa pin',
+      'm-pesa pin',
+      'fake till',
+      'wrong till',
+      'paybill',
+      'reverse the money',
+    ],
+    keywords: ['m-pesa', 'mpesa', 'till', 'agent', 'otp', 'safaricom'],
+    negative: ['kra pin', 'business permit'],
     answer:
       'Common tricks: “send to till then we reverse”, asking for your M-Pesa PIN/OTP, or fake SMS. Safaricom will never ask for your PIN. Confirm till/paybill names in the app before sending. If you already sent money to a wrong till, contact Safaricom and your bank immediately and file a report.',
+    answerSimple:
+      'Never share your M-Pesa PIN or OTP. Check the till name before paying. Call Safaricom 100 if money went to the wrong till.',
     trust: 'verified',
+    updated: '2026-09-21',
     sources: [
       { label: 'Safaricom customer care', note: '100 / *234# / app support' },
       { label: 'CA / consumer protection channels', note: 'For persistent fraud patterns' },
@@ -149,10 +241,12 @@ export const KNOWLEDGE: KnowledgeEntry[] = [
   {
     id: 'nhif-sha',
     title: 'SHA / health cover for traders',
-    keywords: ['nhif', 'sha', 'health', 'afya', 'insurance', 'hospital', 'social health'],
+    phrases: ['social health', 'activate sha', 'nhif'],
+    keywords: ['sha', 'health', 'afya', 'insurance', 'hospital'],
     answer:
       'Kenya’s Social Health Authority (SHA) replaced the old NHIF model. Informal workers can register and contribute as guided on official SHA channels. Hospital staff or “agents” who demand cash “to activate SHA” outside official payment methods should be challenged — use only published contribution channels.',
     trust: 'check',
+    updated: '2026-09-21',
     sources: [
       {
         label: 'Social Health Authority',
@@ -171,10 +265,12 @@ export const KNOWLEDGE: KnowledgeEntry[] = [
   {
     id: 'labour-dispute',
     title: 'Wage / casual labour dispute',
-    keywords: ['salary', 'wage', 'casual', 'fired', 'sacked', 'labour', 'ajira', 'mshahara', 'contract'],
+    phrases: ['not paid', 'owe me', 'casual labour', 'labour office'],
+    keywords: ['salary', 'wage', 'casual', 'fired', 'sacked', 'labour', 'ajira', 'mshahara'],
     answer:
       'Even casual workers have rights under Kenyan labour law (written or implied terms, timely pay, safe conditions). Start with a written demand to the employer, then escalate to the County Labour Office / Ministry of Labour. Keep timesheets, M-Pesa statements, and any messages about pay.',
     trust: 'check',
+    updated: '2026-09-21',
     sources: [
       {
         label: 'Ministry of Labour / County Labour Office',
@@ -192,10 +288,12 @@ export const KNOWLEDGE: KnowledgeEntry[] = [
   {
     id: 'rumour-fuel',
     title: 'Market rumour vs verified notice',
-    keywords: ['rumour', 'rumor', 'whatsapp forward', 'closure', 'eviction', 'demolition', 'notice'],
+    phrases: ['whatsapp forward', 'market closure', 'demolition notice'],
+    keywords: ['rumour', 'rumor', 'closure', 'eviction', 'demolition', 'notice'],
     answer:
       'Market closures, demolitions, and fee hikes should come with a county notice on letterhead or a public announcement. Viral WhatsApp forwards are often wrong or outdated. Ask the market office for the written notice, check the date and stamp, and compare with the county website or verified social accounts before you move goods or pay “protection”.',
     trust: 'verified',
+    updated: '2026-09-21',
     sources: [
       { label: 'Market superintendent / county notice board' },
       { label: 'Official county website or verified social pages' },
@@ -211,10 +309,12 @@ export const KNOWLEDGE: KnowledgeEntry[] = [
   {
     id: 'export-ke',
     title: 'Starting small cross-border trade (EAC)',
-    keywords: ['export', 'uganda', 'tanzania', 'border', 'customs', 'eac', 'import', 'biashara kuvuka'],
+    phrases: ['cross border', 'cross-border', 'eac trade'],
+    keywords: ['export', 'uganda', 'tanzania', 'border', 'customs', 'eac', 'import'],
     answer:
       'Small cross-border trade in the EAC still needs the right goods declarations and, where applicable, simplified trade regimes for certain products. Rules differ by border and product. Start with KEBS/standards for goods, KRA Customs guidance, and the official border desk — not “clearing agents” who only take cash with no paperwork.',
     trust: 'unclear',
+    updated: '2026-09-21',
     sources: [
       { label: 'KRA Customs', url: 'https://www.kra.go.ke' },
       { label: 'KEBS', url: 'https://www.kebs.org', note: 'Standards for many goods' },
@@ -230,20 +330,12 @@ export const KNOWLEDGE: KnowledgeEntry[] = [
   {
     id: 'gbv-help',
     title: 'Threats, violence, or abuse — get help',
-    keywords: [
-      'violence',
-      'abuse',
-      'gbv',
-      'threat',
-      'harassment',
-      'police',
-      'hotline',
-      'usalama',
-      'dhuluma',
-    ],
+    phrases: ['in danger', 'being threatened', 'harassment'],
+    keywords: ['violence', 'abuse', 'gbv', 'threat', 'police', 'hotline', 'usalama', 'dhuluma'],
     answer:
       'If you or someone else is in danger, prioritise safety first. In Kenya you can call emergency services, report at the nearest police station, and use recognised GBV/helpline channels. MarketTrust can log an anonymous tip for awareness, but it is not a substitute for emergency response.',
     trust: 'verified',
+    updated: '2026-09-21',
     sources: [
       { label: 'Kenya emergency / police', note: '999 / 112 (verify locally)' },
       { label: 'Recognised GBV helplines', note: 'Use nationally published numbers from trusted orgs' },
@@ -259,9 +351,9 @@ export const KNOWLEDGE: KnowledgeEntry[] = [
 ]
 
 export const STARTER_PROMPTS = [
+  'I got a KRA text — is it real?',
   'How do I get a Nairobi business permit?',
   'Someone says I won a tender — is it real?',
   'Do I need a KRA PIN for my stall?',
-  'Market fees feel unofficial — what do I do?',
   'Fake M-Pesa till asked for my PIN',
 ]

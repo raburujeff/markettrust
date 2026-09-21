@@ -1,23 +1,23 @@
 ---
 title: "MarketTrust"
-subtitle: "Trusted civic answers for East Africa’s hustle economy"
+subtitle: "Civic information you can verify before you act"
 ---
 
 # MarketTrust
 
 **Find · Verify · Act**
 
-Trusted civic answers for East Africa’s informal & SME economy
+Civic information people can find, verify, and act on — before they pay, click, or move.
+
+Kenya first · English + Kiswahili · Working PoC
 
 ---
 
 # The problem
 
-Traders decide with WhatsApp forwards and “agents.”
+WhatsApp forwards are not civic infrastructure.
 
-Wrong info → unofficial fees, scams, lost trust.
-
-Civic information exists — but not in a form people can **trust and use**.
+Traders lose money to unofficial fees, fake KRA texts, and tender “awards” because verifiable answers are hard to find under pressure.
 
 ---
 
@@ -25,7 +25,8 @@ Civic information exists — but not in a form people can **trust and use**.
 
 - Market traders & micro-businesses  
 - Small firms navigating permits, KRA, tenders  
-- Responders who need tip → triage  
+- Responders / CSOs who need tip → triage  
+- Communities separating rumour from stamped notice  
 
 **Kenya first. East Africa next.**
 
@@ -33,7 +34,7 @@ Civic information exists — but not in a form people can **trust and use**.
 
 # The solution
 
-WhatsApp-shaped assistant that returns:
+WhatsApp-shaped assistant over a curated Kenya SME civic corpus:
 
 1. Plain-language answer  
 2. **Trust label** — Verified / Check locally / Unclear  
@@ -44,38 +45,50 @@ Plus anonymous **Report** → **Cases** handoff
 
 ---
 
+# Why not ChatGPT?
+
+| General AI chat | MarketTrust |
+|-----------------|-------------|
+| Confident fluency | Constrained corpus |
+| Can invent steps | Unmatched → Unclear |
+| No reporting loop | Anonymous Report → Cases |
+| Often needs API key | PoC runs offline-ready in-browser |
+
+---
+
+# Demo moment
+
+**“I got a KRA text — is it real?”** → Suspicious KRA SMS guidance (don’t click; open iTax yourself; report)
+
+**“Do I need a KRA PIN?”** → PIN registration path
+
+Intent-aware retrieval — not the same article for every “KRA” mention.
+
+---
+
 # Tracks
 
 **Transparency & Accountability** — permits, taxes, official fees  
 
-**Safety & Reporting** — tender / M-Pesa scams, anonymous tips  
+**Safety & Reporting** — KRA / tender / M-Pesa scams, anonymous tips  
 
 **Stability & Cohesion** — rumour vs stamped county notice  
 
 ---
 
-# How trust works
+# Real-world conditions
 
-- Curated Kenya SME civic corpus  
-- Sources: county portals, KRA, PPIP, Safaricom channels, and more  
-- Unmatched questions → **Unclear** (no fake certainty)  
-- Privacy-first anonymous tips  
-
----
-
-# Demo flow
-
-1. Ask: Nairobi business permit → Verified + sources  
-2. Ask: “I won a tender” → scam guidance  
-3. Kiswahili: *kibali cha biashara*  
-4. Report tip → triage in Cases  
+- Trust & verification visible on every matched answer  
+- Privacy: tips stay in-browser for the PoC; anonymous by default  
+- Multilingual: English + Kiswahili  
+- Low bandwidth: static SPA, corpus in-bundle, no model round-trip  
+- Local relevance: Kenya SME seed  
+- Clear next steps + Report when chat isn’t enough  
 
 ---
 
 # What’s next
 
-- Live WhatsApp channel  
-- Deeper, maintained corpus  
-- Pilot with trader associations & civic partners  
+Live WhatsApp channel · deeper maintained corpus · trader association / CSO pilots  
 
-**MarketTrust** — information you can trust and act on.
+**MarketTrust — verify before you act.**

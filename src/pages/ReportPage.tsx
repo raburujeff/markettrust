@@ -1,11 +1,28 @@
 import { useState, type FormEvent } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
+import { Select } from '../components/Select'
 import { saveCase } from '../lib/reports'
 
+const CATEGORY_OPTIONS = [
+  { value: 'scam', label: 'Scam / fraud' },
+  { value: 'fee', label: 'Unofficial fee demand' },
+  { value: 'rumour', label: 'Harmful rumour' },
+  { value: 'threat', label: 'Threat / harassment' },
+  { value: 'other', label: 'Other' },
+] as const
+
+type Category = (typeof CATEGORY_OPTIONS)[number]['value']
+
+function parseCategory(raw: string | null): Category {
+  const hit = CATEGORY_OPTIONS.find((o) => o.value === raw)
+  return hit?.value ?? 'scam'
+}
+
 export function ReportPage() {
-  const [category, setCategory] = useState<'fee' | 'scam' | 'threat' | 'rumour' | 'other'>('scam')
+  const [params] = useSearchParams()
+  const [category, setCategory] = useState<Category>(() => parseCategory(params.get('category')))
   const [location, setLocation] = useState('')
-  const [summary, setSummary] = useState('')
+  const [summary, setSummary] = useState(() => params.get('summary') ?? '')
   const [anonymous, setAnonymous] = useState(true)
   const [doneId, setDoneId] = useState<string | null>(null)
 
@@ -24,13 +41,17 @@ export function ReportPage() {
   }
 
   return (
-    <div className="shell">
+    <div className="shell page-centered">
       <div className="page-head">
         <p className="section-label">Safety</p>
         <h1>Report a tip</h1>
         <p>
-          Anonymous by default. This PoC stores tips in your browser for the demo cases queue — in
-          production they would route to verified responders.
+          Anonymous by default. Tips stay in this browser for the PoC Cases queue — nothing is sent
+          to a server. In production they would route to verified responders / partner orgs.
+        </p>
+        <p className="privacy-note">
+          Privacy: no account required. Clear site data to wipe tips. Not for emergencies — call
+          999 / 112 if you are in danger.
         </p>
       </div>
 
@@ -53,16 +74,12 @@ export function ReportPage() {
         <form className="form-panel" onSubmit={onSubmit}>
           <label>
             Category
-            <select
+            <Select
               value={category}
-              onChange={(e) => setCategory(e.target.value as typeof category)}
-            >
-              <option value="scam">Scam / fraud</option>
-              <option value="fee">Unofficial fee demand</option>
-              <option value="rumour">Harmful rumour</option>
-              <option value="threat">Threat / harassment</option>
-              <option value="other">Other</option>
-            </select>
+              options={[...CATEGORY_OPTIONS]}
+              onChange={setCategory}
+              aria-label="Category"
+            />
           </label>
           <label>
             Location (market, estate, county)

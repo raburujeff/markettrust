@@ -1,45 +1,37 @@
 # MarketTrust — Written Summary
 
 ## One-liner
-MarketTrust helps East African traders and small businesses **find, verify, and act on** civic information — permits, taxes, tenders, fees, and scams — through a WhatsApp-shaped chat with trust labels, sources, and clear next steps.
+MarketTrust helps East African traders and small businesses **find, verify, and act on** civic information — through a WhatsApp-shaped chat with trust labels, sources, next steps, and anonymous reporting.
 
 ## Problem
-In Kenya’s informal and SME economy, people rely on WhatsApp forwards, “agents,” and rumours for high-stakes decisions: business permits, county fees, KRA obligations, tenders, and payments. Bad information leads to lost money, unofficial fee demands, and eroded trust between communities and institutions.
+In Kenya’s informal and SME economy, people rely on WhatsApp forwards, “agents,” and rumours for high-stakes decisions. Bad information costs money and trust. General AI chatbots can invent confident wrong advice — dangerous for permits, taxes, and scams.
 
 ## Intended users
 - Market traders and micro-entrepreneurs (primary)
 - Small business owners navigating county and national requirements
-- Community responders / partner orgs who triage anonymous tips (Cases view)
+- Community responders / partner orgs who triage anonymous tips
 
 ## Solution (PoC)
-A lightweight web product with three flows:
+1. **Ask** — EN/SW Q&A over a Kenya SME civic corpus with Verified / Check locally / Unclear, sources, and next steps. Unmatched → Unclear (no fake certainty). Intent-aware retrieval (KRA SMS ≠ KRA PIN).
+2. **Report** — Anonymous tips; PoC stores in-browser only.
+3. **Cases** — Triage queue for human handoff.
 
-1. **Ask** — Multilingual (English / Kiswahili) Q&A over a Kenya SME civic corpus. Every answer includes:
-   - Trust label: **Verified** / **Check locally** / **Unclear**
-   - Public sources (e.g. county portals, KRA, PPIP)
-   - Actionable next steps
-2. **Report** — Anonymous tips for scams, unofficial fees, rumours, or threats
-3. **Cases** — Simple triage queue showing human handoff after AI intake
-
-Designed for real-world constraints: low-bandwidth UX, privacy by default on tips, local relevance (Kenya seed; EAC expansion path), and WhatsApp-shaped interaction for eventual Meta Cloud deployment.
+Designed for: trust/verification, privacy, multilingual access, low bandwidth (static SPA, no model API), local KE relevance, clear next steps.
 
 ## Challenge tracks
-**Cross-track**, led by **Transparency & Accountability**, with **Safety, Reporting & Protection** (anonymous tips, scam pathways) and **Stability & Social Cohesion** (rumour vs stamped notices).
+**Cross-track:** Transparency & Accountability · Safety, Reporting & Protection · Stability & Social Cohesion.
 
 ## How it works (demo)
-1. User asks: “How do I get a Nairobi business permit?”
-2. MarketTrust returns a Verified answer, official sources, and a checklist
-3. User can report an unofficial fee demand anonymously
-4. A responder triages the tip in Cases
+1. “I got a KRA text — is it real?” → scam SMS guidance  
+2. “Do I need a KRA PIN?” → registration path  
+3. Report unofficial fee → triage in Cases  
+Or use **Run 60-second judge demo** on Ask.
 
 ## Why develop further
-- Meets people where they already are (chat / WhatsApp)
-- Makes trust *visible* instead of implied
-- Separates retrieval + verification + action + escalation
-- Clear path: deepen corpus → live WhatsApp → partner org case routing → county/CSO pilots
+Meets people in chat, makes trust visible, separates verification from fluency, and adds reporting escalation. Path: deeper corpus → WhatsApp → CSO/county pilots.
 
 ## Tech (PoC)
-Vite, React, TypeScript. Client-side retrieval over a curated knowledge base (no API key required for the demo). Tips stored locally for the PoC triage queue.
+Vite, React, TypeScript. Client-side retrieval. LocalStorage tips. No API key required.
 
 ## Status
 Working proof of concept. Not production-ready; not a substitute for emergency services.

@@ -1,65 +1,53 @@
 # MarketTrust — Pitch Deck Outline
-*Copy into Google Slides / Canva. ~8 slides. Keep text sparse; demo live.*
+*9 slides. Open `pitch-deck.html` in Chrome → Print → Save as PDF (landscape). Or use `MarketTrust-Pitch-Deck.pdf`.*
 
 ---
 
-## Slide 1 — Title
+## 1 — Title
 **MarketTrust**  
-Trusted civic answers for East Africa’s hustle economy  
-*Find · Verify · Act*
+Civic information people can find, verify, and act on — before they pay, click, or move.  
+Kenya first · EN + SW · Working PoC
 
 ---
 
-## Slide 2 — The problem
-Traders decide with WhatsApp forwards and “agents.”  
-Wrong info → unpaid fees, scams, lost trust.  
-Civic information exists — but not in a form people can **trust and use**.
+## 2 — Problem
+WhatsApp forwards are not civic infrastructure.  
+Unofficial fees, fake KRA texts, tender “awards.” Official portals exist — scattered, dense, easy to spoof.
 
 ---
 
-## Slide 3 — Who it’s for
-- Market traders & micro-businesses  
-- Small firms navigating permits, KRA, tenders  
-- Responders who need a clean tip → triage path  
-
-Kenya first. East Africa next.
+## 3 — Users
+Traders & micro-businesses · Small firms · Responders/CSOs · Communities (rumour vs notice)
 
 ---
 
-## Slide 4 — The solution
-WhatsApp-shaped assistant that returns:
-1. Plain-language answer  
-2. **Trust label** (Verified / Check locally / Unclear)  
-3. Sources  
-4. Next steps  
-+ Anonymous **Report** → **Cases** handoff  
+## 4 — Solution
+**Find · Verify · Act**  
+Ask (label + sources + next steps) · Report (anonymous) · Cases (triage)
 
 ---
 
-## Slide 5 — Tracks
-**Transparency** — permits, taxes, official fees  
-**Safety** — tender / M-Pesa scams, anonymous tips  
-**Stability** — rumour vs stamped county notice  
+## 5 — Why not ChatGPT?
+Fluency ≠ trust. Constrained corpus · Unclear when unmatched · Report loop · No API key for PoC
 
 ---
 
-## Slide 6 — Demo (live or screenshots)
-1. Ask: Nairobi business permit → Verified + sources  
-2. Ask: “I won a tender” → scam guidance  
-3. SW: *kibali cha biashara*  
-4. Report tip → triage in Cases  
+## 6 — Demo moment
+“I got a KRA text” → Suspicious KRA SMS (not the PIN article)  
+“Do I need a KRA PIN?” → PIN registration path
 
 ---
 
-## Slide 7 — Why it wins / next
-- Meets people on chat  
-- Makes verification visible  
-- Built for low bandwidth & privacy  
-**Next:** WhatsApp channel · deeper corpus · CSO/county pilot  
+## 7 — Tracks
+Transparency · Safety · Stability — cross-track by design
 
 ---
 
-## Slide 8 — Ask
-Working PoC ready.  
-Looking to pilot with trader associations & civic partners.  
-**MarketTrust** — information you can trust and act on.
+## 8 — Real-world conditions
+Trust · Privacy · Multilingual · Low bandwidth · Local KE relevance · Clear next steps
+
+---
+
+## 9 — Ask / next
+WhatsApp pilots · deeper corpus · CSO routing  
+**MarketTrust — verify before you act.**

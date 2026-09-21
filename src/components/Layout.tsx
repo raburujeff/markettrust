@@ -1,8 +1,13 @@
 import { NavLink, Outlet } from 'react-router-dom'
+import { ConnectionBanner } from './ConnectionBanner'
 
 export function Layout() {
   return (
     <div className="app-shell">
+      <a href="#main" className="skip-link">
+        Skip to content
+      </a>
+      <ConnectionBanner />
       <header className="site-header">
         <div className="shell site-header-inner">
           <NavLink to="/" className="brand">
@@ -27,12 +32,12 @@ export function Layout() {
           </nav>
         </div>
       </header>
-      <main className="page-main">
+      <main id="main" className="page-main" tabIndex={-1}>
         <Outlet />
       </main>
       <footer className="site-footer">
         <div className="shell site-footer-inner">
-          <p>MarketTrust — trusted civic answers for East Africa</p>
+          <p>MarketTrust — civic answers you can verify before you act</p>
         </div>
       </footer>
     </div>

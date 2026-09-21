@@ -2,156 +2,270 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>MarketTrust — Pitch Deck</title>
   <style>
     @page { size: landscape; margin: 0; }
     * { box-sizing: border-box; }
     body {
       margin: 0;
-      font-family: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
+      font-family: Georgia, "Times New Roman", serif;
       color: #14213d;
-      background: #fff;
+      background: #f3f5f8;
     }
     .slide {
       width: 100vw;
       height: 100vh;
-      padding: 8vh 8vw;
       page-break-after: always;
       break-after: page;
       display: flex;
       flex-direction: column;
       justify-content: center;
+      padding: 7vh 8vw;
       position: relative;
+      background:
+        radial-gradient(ellipse at 100% 0%, rgba(196, 92, 38, 0.12), transparent 45%),
+        radial-gradient(ellipse at 0% 100%, rgba(29, 78, 137, 0.1), transparent 40%),
+        #ffffff;
     }
     .slide:last-child { page-break-after: auto; }
-    .slide.title { background: #14213d; color: #f3f5f8; }
-    .slide.title h1 { color: #fff; font-size: 3.4rem; margin: 0 0 0.4rem; }
-    .slide.title .accent { color: #c45c26; font-style: italic; }
-    .slide.title p { font-size: 1.35rem; opacity: 0.9; max-width: 36rem; }
-    h1, h2 {
-      font-family: "Source Serif 4", Georgia, serif;
-      letter-spacing: -0.02em;
-      margin: 0 0 1rem;
+    .slide.title {
+      background: #14213d;
+      color: #fff;
     }
-    h2 { font-size: 2.4rem; }
-    ul { margin: 0; padding-left: 1.2rem; font-size: 1.25rem; line-height: 1.55; }
-    li { margin: 0.45rem 0; }
     .label {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       text-transform: uppercase;
-      letter-spacing: 0.14em;
-      font-size: 0.75rem;
+      letter-spacing: 0.16em;
+      font-size: 0.78rem;
       font-weight: 700;
       color: #c45c26;
-      margin-bottom: 0.6rem;
+      margin: 0 0 1rem;
     }
-    .grid3 {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 1.5rem;
-      margin-top: 0.5rem;
+    .slide.title .label { color: #d97845; }
+    h1 {
+      font-size: clamp(2.8rem, 6vw, 4.4rem);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin: 0 0 1rem;
+      font-weight: 700;
     }
-    .card {
-      border-top: 3px solid #14213d;
-      padding-top: 0.75rem;
+    h1 span { color: #c45c26; font-style: italic; }
+    .slide.title h1 span { color: #d97845; }
+    h2 {
+      font-size: clamp(2rem, 4.2vw, 3.1rem);
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+      margin: 0 0 1.1rem;
+      max-width: 18ch;
     }
-    .card h3 { margin: 0 0 0.4rem; font-size: 1.15rem; font-family: Georgia, serif; }
-    .card p { margin: 0; color: #5c6b7a; font-size: 1rem; line-height: 1.4; }
+    p.lead {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 1.25rem;
+      line-height: 1.5;
+      color: #3d4f63;
+      max-width: 40rem;
+      margin: 0 0 1.5rem;
+    }
+    .slide.title p.lead { color: rgba(255,255,255,0.85); }
+    ul {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      margin: 0;
+      padding-left: 1.25rem;
+      font-size: 1.15rem;
+      line-height: 1.55;
+      color: #3d4f63;
+      max-width: 42rem;
+    }
+    li { margin: 0.55rem 0; }
     .footer {
       position: absolute;
-      bottom: 4vh;
+      bottom: 3.5vh;
       left: 8vw;
       right: 8vw;
       display: flex;
       justify-content: space-between;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       font-size: 0.8rem;
-      color: #5c6b7a;
+      color: #8696a0;
+      font-weight: 600;
     }
-    .slide.title .footer { color: rgba(243,245,248,0.55); }
+    .slide.title .footer { color: rgba(255,255,255,0.35); }
+    .grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: 1fr 1fr;
+      max-width: 52rem;
+    }
+    .grid3 { grid-template-columns: 1fr 1fr 1fr; }
+    .card {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      border: 1px solid rgba(20, 33, 61, 0.12);
+      border-radius: 10px;
+      padding: 1.15rem 1.25rem;
+      background: #fff;
+    }
+    .card h3 {
+      font-family: Georgia, "Times New Roman", serif;
+      margin: 0 0 0.4rem;
+      font-size: 1.2rem;
+      color: #14213d;
+    }
+    .card p { margin: 0; color: #5c6b7a; font-size: 0.98rem; line-height: 1.4; }
+    .badge {
+      display: inline-block;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.5rem;
+      border-radius: 3px;
+      background: rgba(29, 78, 137, 0.12);
+      color: #1d4e89;
+      margin-bottom: 0.5rem;
+    }
+    .moment {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #efeae2;
+      border-radius: 12px;
+      padding: 1.25rem 1.4rem;
+      max-width: 36rem;
+      margin-top: 0.5rem;
+    }
+    .moment .q { font-weight: 600; color: #14213d; margin-bottom: 0.5rem; }
+    .moment .a { color: #3d4f63; line-height: 1.45; }
+    @media print {
+      .slide { width: 100%; height: 100vh; }
+    }
   </style>
 </head>
 <body>
   <section class="slide title">
-    <div class="label" style="color:#d97845">Capstone PoC</div>
-    <h1>Market<span class="accent">Trust</span></h1>
-    <p>Trusted civic answers for East Africa’s hustle economy — Find · Verify · Act</p>
-    <div class="footer"><span>MarketTrust</span><span>1 / 8</span></div>
+    <p class="label">Andela × Open Society Foundations · Invention sprint</p>
+    <h1>Market<span>Trust</span></h1>
+    <p class="lead">Civic information people can find, verify, and act on — before they pay, click, or move.</p>
+    <p class="lead" style="opacity:0.75;font-size:1rem;margin:0;">Kenya first · English + Kiswahili · Working PoC</p>
+    <div class="footer"><span>MarketTrust</span><span>1 / 11</span></div>
   </section>
 
   <section class="slide">
-    <div class="label">The problem</div>
-    <h2>Civic info exists. Trust does not travel.</h2>
+    <p class="label">The problem</p>
+    <h2>WhatsApp forwards are not civic infrastructure.</h2>
+    <p class="lead">Traders lose money to unofficial fees, fake KRA texts, and tender “awards” because verifiable answers are hard to find under pressure.</p>
     <ul>
-      <li>Traders rely on WhatsApp forwards and “agents”</li>
-      <li>Wrong info → unofficial fees, scams, lost money</li>
-      <li>People need answers they can <strong>verify and act on</strong></li>
+      <li>Official portals exist — scattered, dense, easy to spoof</li>
+      <li>“Agents” and rumours fill the gap with confident wrong advice</li>
+      <li>No safe, simple path from doubt → verified next step → report</li>
     </ul>
-    <div class="footer"><span>MarketTrust</span><span>2 / 8</span></div>
+    <div class="footer"><span>MarketTrust</span><span>2 / 11</span></div>
   </section>
 
   <section class="slide">
-    <div class="label">Users</div>
-    <h2>Built for East Africa’s informal &amp; SME economy</h2>
-    <ul>
-      <li>Market traders and micro-entrepreneurs</li>
-      <li>Small businesses navigating permits, KRA, tenders</li>
-      <li>Responders who need tip → triage</li>
-    </ul>
-    <p style="margin-top:1.2rem;color:#5c6b7a">Kenya first. East Africa next.</p>
-    <div class="footer"><span>MarketTrust</span><span>3 / 8</span></div>
-  </section>
-
-  <section class="slide">
-    <div class="label">Solution</div>
-    <h2>WhatsApp-shaped civic assistant</h2>
-    <div class="grid3">
-      <div class="card"><h3>Ask</h3><p>EN/SW answers with trust label, sources, next steps</p></div>
-      <div class="card"><h3>Report</h3><p>Anonymous tips for scams, fees, rumours, threats</p></div>
-      <div class="card"><h3>Cases</h3><p>Human triage handoff after intake</p></div>
+    <p class="label">Who it’s for</p>
+    <h2>The hustle economy — and those who protect it.</h2>
+    <div class="grid" style="margin-top:1rem;">
+      <div class="card"><h3>Traders &amp; micro-businesses</h3><p>Need to check permits, KRA, market fees, and scam texts before acting.</p></div>
+      <div class="card"><h3>Small firms</h3><p>Navigating county + national rules without paying middlemen.</p></div>
+      <div class="card"><h3>Responders / CSOs</h3><p>Need anonymous tips that arrive already labelled for triage.</p></div>
+      <div class="card"><h3>Communities</h3><p>Need rumour vs stamped notice — less panic, more cohesion.</p></div>
     </div>
-    <div class="footer"><span>MarketTrust</span><span>4 / 8</span></div>
+    <div class="footer"><span>MarketTrust</span><span>3 / 11</span></div>
   </section>
 
   <section class="slide">
-    <div class="label">Tracks</div>
-    <h2>Cross-track, transparency-led</h2>
-    <div class="grid3">
-      <div class="card"><h3>Transparency</h3><p>Permits, taxes, official fees without middlemen</p></div>
-      <div class="card"><h3>Safety</h3><p>Tender &amp; M-Pesa scams; anonymous reporting</p></div>
-      <div class="card"><h3>Stability</h3><p>Rumour vs stamped county notices</p></div>
+    <p class="label">The solution</p>
+    <h2>Find · Verify · Act</h2>
+    <p class="lead">A WhatsApp-shaped assistant over a curated Kenya SME civic corpus — not an open-ended chatbot.</p>
+    <ul>
+      <li><strong>Ask</strong> — answer + trust label + public sources + next steps</li>
+      <li><strong>Report</strong> — anonymous tip (privacy by default)</li>
+      <li><strong>Cases</strong> — human triage handoff after intake</li>
+    </ul>
+    <div class="footer"><span>MarketTrust</span><span>4 / 11</span></div>
+  </section>
+
+  <section class="slide">
+    <p class="label">Why not ChatGPT?</p>
+    <h2>Fluency is not trust.</h2>
+    <div class="grid" style="margin-top:1rem;">
+      <div class="card">
+        <h3>General AI chat</h3>
+        <p>Optimises for a confident answer. Can invent fees, portals, or refund steps. No civic reporting loop.</p>
+      </div>
+      <div class="card" style="border-color:rgba(29,78,137,0.35);background:rgba(29,78,137,0.05);">
+        <h3>MarketTrust</h3>
+        <p>Constrained corpus. Unmatched → <strong>Unclear</strong>. Sources + next steps. Anonymous Report → Cases. No API key for the PoC.</p>
+      </div>
     </div>
-    <div class="footer"><span>MarketTrust</span><span>5 / 8</span></div>
+    <div class="footer"><span>MarketTrust</span><span>5 / 11</span></div>
   </section>
 
   <section class="slide">
-    <div class="label">Trust &amp; sources</div>
-    <h2>Make verification visible</h2>
-    <ul>
-      <li>Labels: <strong>Verified</strong> / <strong>Check locally</strong> / <strong>Unclear</strong></li>
-      <li>Sources: county portals, KRA, PPIP, Safaricom channels, and more</li>
-      <li>Unmatched questions stay Unclear — no fake certainty</li>
-      <li>Anonymous tips by default</li>
-    </ul>
-    <div class="footer"><span>MarketTrust</span><span>6 / 8</span></div>
+    <p class="label">Demo moment</p>
+    <h2>One SMS. Two very different answers.</h2>
+    <div class="moment">
+      <div class="q">“I got a KRA text — is it real?”</div>
+      <span class="badge">Verified · Suspicious KRA SMS</span>
+      <div class="a">Don’t click the link. Open iTax yourself. Screenshot and report. — Not the generic “how to get a PIN” article.</div>
+    </div>
+    <p class="lead" style="margin-top:1.25rem;margin-bottom:0;">Same product also answers “Do I need a KRA PIN?” correctly — intent-aware retrieval, not keyword coincidence.</p>
+    <div class="footer"><span>MarketTrust</span><span>6 / 11</span></div>
   </section>
 
   <section class="slide">
-    <div class="label">Demo</div>
-    <h2>Four minutes to show the loop</h2>
+    <p class="label">Hackathon tracks</p>
+    <h2>Cross-track on purpose.</h2>
+    <div class="grid grid3" style="margin-top:1rem;">
+      <div class="card"><h3>Transparency</h3><p>Permits, taxes, official fees — with sources you can open.</p></div>
+      <div class="card"><h3>Safety</h3><p>KRA / tender / M-Pesa scams + anonymous reporting pathways.</p></div>
+      <div class="card"><h3>Stability</h3><p>Rumour vs stamped county notice; less friction, clearer truth.</p></div>
+    </div>
+    <div class="footer"><span>MarketTrust</span><span>7 / 11</span></div>
+  </section>
+
+  <section class="slide">
+    <p class="label">Real-world conditions</p>
+    <h2>Built for how people decide under pressure.</h2>
     <ul>
-      <li>Ask: Nairobi business permit → Verified + sources</li>
-      <li>Ask: “I won a tender” → scam pathway</li>
-      <li>Kiswahili: <em>kibali cha biashara</em></li>
-      <li>Report tip → triage in Cases</li>
+      <li><strong>Trust &amp; verification</strong> — labels, sources, reviewed dates; Unclear when unmatched</li>
+      <li><strong>Low bandwidth</strong> — static SPA; offline Ask from in-bundle corpus</li>
+      <li><strong>Accessibility</strong> — plain-language mode, skip link, keyboard UI</li>
+      <li><strong>Privacy</strong> — tips stay on-device for the PoC; anonymous by default</li>
+      <li><strong>Multilingual</strong> — EN + SW now; FR / AR / PT + local languages on the path</li>
+      <li><strong>Local relevance + next steps</strong> — Kenya seed; checklists + Report escalation</li>
     </ul>
-    <div class="footer"><span>MarketTrust</span><span>7 / 8</span></div>
+    <div class="footer"><span>MarketTrust</span><span>8 / 11</span></div>
+  </section>
+
+  <section class="slide">
+    <p class="label">Uniqueness &amp; scalability</p>
+    <h2>Not another chatbot — a trust shell.</h2>
+    <div class="grid" style="margin-top:1rem;">
+      <div class="card"><h3>Unique</h3><p>Unclear is first-class. Intent-aware civic corpus + anonymous Report→Cases separates fluency from verification.</p></div>
+      <div class="card"><h3>Scalable</h3><p>Swap locale corpus packs (laws, institutions, languages) — keep the same labels, next steps, and escalation shell across OSF geographies.</p></div>
+    </div>
+    <div class="footer"><span>MarketTrust</span><span>9 / 11</span></div>
+  </section>
+
+  <section class="slide">
+    <p class="label">Potential impact</p>
+    <h2>Fewer costly clicks. Better tips for partners.</h2>
+    <ul>
+      <li>Traders verify before paying “agents,” fake KRA links, or tender fees</li>
+      <li>Partners receive labelled, anonymous tips ready for triage</li>
+      <li>Path to WhatsApp — where hustle-economy advice already lives</li>
+    </ul>
+    <p class="lead" style="margin-top:1.25rem;margin-bottom:0;">AI coding tools accelerated the build; the core find/verify/act idea is original to this capstone.</p>
+    <div class="footer"><span>MarketTrust</span><span>10 / 11</span></div>
   </section>
 
   <section class="slide title">
-    <div class="label" style="color:#d97845">Next</div>
-    <h1>Worth building further</h1>
-    <p>WhatsApp channel · deeper corpus · trader association &amp; civic partner pilots</p>
-    <p style="margin-top:1.5rem;font-size:1.1rem"><strong>MarketTrust</strong> — information you can trust and act on.</p>
-    <div class="footer"><span>MarketTrust</span><span>8 / 8</span></div>
+    <p class="label">Why develop further</p>
+    <h1 style="max-width:14ch;">From PoC to WhatsApp pilots.</h1>
+    <p class="lead">Next: Meta Cloud delivery, deeper maintained corpus, trader-association / CSO case routing. Invention sprint today — civic infrastructure tomorrow.</p>
+    <p class="lead" style="color:#d97845;font-weight:700;font-family:-apple-system,sans-serif;letter-spacing:0.04em;text-transform:uppercase;font-size:0.95rem;">MarketTrust — verify before you act.</p>
+    <div class="footer"><span>MarketTrust</span><span>11 / 11</span></div>
   </section>
 </body>
 </html>

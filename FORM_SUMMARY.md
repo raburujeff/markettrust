@@ -1,22 +1,30 @@
 # MarketTrust — Capstone Summary (paste into form)
 
-**Track:** Transparency & Accountability (cross-track: also Safety / Stability)  
-**Country:** Kenya  
+**Track:** Transparency & Accountability (cross-track: Safety, Reporting & Protection · Stability & Social Cohesion)  
+**Country / local relevance:** Kenya seed (county permits, KRA, PPIP, markets); corpus pattern designed to adapt to other OSF geographies  
 
 ---
 
-MarketTrust helps East African traders and small businesses find, understand, verify, and act on civic information they can trust — especially permits, taxes, tenders, market fees, and common scams.
+MarketTrust helps traders and small businesses **find, verify, and act on** civic information — permits, taxes, tenders, market fees, and scams — through a WhatsApp-shaped assistant that makes trust visible instead of implying it.
 
-**Problem.** In Kenya’s informal and SME economy, people often rely on WhatsApp forwards, informal “agents,” and rumours for high-stakes decisions. That leads to unpaid or unofficial fees, tender/M-Pesa scams, and weaker trust between communities and institutions. Official information exists, but it is hard to find, hard to trust, and hard to act on in everyday conditions.
+**Problem.** In Kenya’s hustle economy, people decide with WhatsApp forwards and “agents.” Official portals exist but are hard to use under pressure. Fluent general AI can invent fees or refund steps with false certainty — costly when money and safety are on the line.
 
-**Users.** Market traders and micro-entrepreneurs (primary); small business owners navigating county and national requirements; and responders/partner organisations who need a simple tip → triage path.
+**Users.** Market traders and micro-entrepreneurs (primary); small firms navigating county/national rules; responders and partners who need anonymous tip → triage.
 
-**Approach.** The PoC is a WhatsApp-shaped web assistant with three flows: (1) Ask — English/Kiswahili questions over a curated Kenya SME civic corpus; every reply includes a trust label (Verified / Check locally / Unclear), public sources, and next steps; (2) Report — anonymous tips for scams, unofficial fees, rumours, or threats; (3) Cases — a lightweight triage queue showing human handoff after intake.
+**Approach.** Three PoC flows: (1) **Ask** — EN/SW retrieval over a curated Kenya SME corpus; every matched reply shows a trust label (Verified / Check locally / Unclear), public sources, **last reviewed date**, and next steps; unmatched → Unclear (no hallucination); plain-language mode for lower literacy / digital confidence; (2) **Report** — anonymous tips, stored in-browser only for the PoC; (3) **Cases** — human triage handoff. Offline: Ask still runs from the in-bundle corpus.
 
-**Information sources.** Seed answers cite public portals and institutions such as Nairobi City County / county e-services guidance, BRS, KRA iTax, the Public Procurement Information Portal (tenders.go.ke), PPRA, Safaricom customer-care channels, SHA, and county labour offices. Where fees or procedures vary by locality, answers are labelled “Check locally” and point users to stamped notices or official desks rather than inventing certainty.
+**Information sources.** Nairobi City County / county e-services, BRS, KRA iTax, PPIP (tenders.go.ke), PPRA, Safaricom care channels, SHA, county labour offices. Locally variable procedures use **Check locally**.
 
-**Trust and accuracy.** MarketTrust does not present all answers as equally true. Retrieval is constrained to a curated corpus; unmatched questions return Unclear instead of hallucinated guidance. Trust labels and source links make verification visible. Anonymous reporting defaults to privacy-preserving tips. The product is explicitly not a substitute for emergency services.
+**Trust and accuracy.** Constrained corpus + intent-aware scoring (e.g. “I got a KRA text” ≠ “KRA PIN”). Labels and source links make verification easy. Entries carry a **reviewed date** so users know when guidance was last checked. Privacy by default on tips. Not a substitute for emergency services (999 / 112).
 
-**Use of AI tools.** AI coding assistants supported implementation (scaffolding, UI, and iteration speed). The core product idea — trusted civic answers for East Africa’s hustle economy via find/verify/act — was defined for this capstone. The demo PoC uses deterministic retrieval over the curated corpus so judges can reproduce answers without an API key; a production path would add WhatsApp delivery and stronger retrieval/LLM assistance with human escalation.
+**Operating constraints addressed.** Trust/verification · low bandwidth (static SPA, offline corpus) · accessibility (skip link, keyboard select, plain language, reduced motion) · privacy (local tips, anonymous default) · multilingual (EN/SW live; FR/AR/PT + local languages on the expansion path) · local relevance (Kenya seed, adaptable packs) · clear next steps + Report.
 
-**Why it matters.** It meets people where they already seek advice (chat), makes trust explicit, and connects understanding to action and reporting — aligned with civic information people can trust and use in everyday life.
+**Use of AI tools (judging criterion).** AI coding assistants accelerated UI, retrieval iteration, and submission packaging. The **core capstone idea** — trusted civic answers for the hustle economy via find/verify/act — is original to this submission, not AI-generated. The demo uses **deterministic retrieval** so judges can reproduce answers without an API key.
+
+**Uniqueness.** Separates fluency from trust: Unclear is a first-class outcome; intent-aware civic corpus + anonymous Report→Cases is not “another chatbot.”
+
+**Scalability.** Swap locale corpus packs (laws, institutions, languages) while keeping the same trust-label + next-steps + escalation shell — Kenya first, OSF regions next.
+
+**Potential impact.** Fewer mistaken payments and scam clicks; labelled tips for partners; a path to WhatsApp delivery where traders already are.
+
+**Why develop further.** Invention sprint PoC proves the loop. Next: Meta Cloud WhatsApp, deeper maintained corpus with counties/CSOs, case routing to verified responders.
