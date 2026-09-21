@@ -98,8 +98,9 @@ export function findAnswer(
   }
 
   // Require a clear hit; ambiguous near-ties stay Unclear
-  const margin = best && best.score - second
-  const strongEnough = best && best.score >= 6 && (margin === undefined || margin >= 2 || best.score >= 14)
+  const margin = best ? best.score - second : 0
+  const strongEnough =
+    !!best && best.score >= 6 && (margin >= 2 || best.score >= 14)
 
   if (!best || !strongEnough) {
     return {
