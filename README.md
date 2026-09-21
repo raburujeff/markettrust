@@ -2,38 +2,45 @@
 
 **Trusted civic answers for East Africa’s informal & SME economy.**
 
-Civic invention PoC covering transparency, safety, and social cohesion tracks.
-
-## What it does
-
-1. **Ask** — WhatsApp-shaped chat. Answers include a trust label (`Verified` / `Check locally` / `Unclear`), sources, and next steps. EN + SW.
-2. **Report** — Anonymous tips (scam, unofficial fees, rumours, threats).
-3. **Cases** — Demo triage queue (localStorage) showing human handoff.
-
-Built as a fast, offline-friendly web PoC. Production path: Meta WhatsApp + case management for partner orgs.
+Find · Verify · Act — WhatsApp-shaped civic Q&A with trust labels, sources, next steps, anonymous tips, and a triage queue.
 
 ## Quick start
 
 ```bash
-cd products/markettrust
 npm install
 npm run dev
 ```
 
-## Demo script
+Open the URL Vite prints (usually `http://localhost:5173`).
 
-1. Open **Ask** → try “How do I get a Nairobi business permit?”
+## What it does
+
+1. **Ask** — EN/SW chat over a Kenya SME civic corpus. Answers include a trust label (`Verified` / `Check locally` / `Unclear`), sources, and next steps.
+2. **Report** — Anonymous tips (scam, unofficial fees, rumours, threats).
+3. **Cases** — Demo triage queue (browser `localStorage`).
+
+## Demo path
+
+1. **Ask** → “How do I get a Nairobi business permit?”
 2. Try “Someone says I won a tender”
-3. Switch **SW** and ask about `kibali` / `biashara`
-4. **Report** an unofficial fee → open **Cases** and triage
+3. Switch **SW** → ask about `kibali` / `biashara`
+4. **Report** a tip → open **Cases** and triage
 
 ## Stack
 
 - Vite + React + TypeScript
-- Client-side retrieval over a Kenya SME civic corpus (no API key required for the PoC)
+- Client-side retrieval (no API key required for the PoC)
 - LocalStorage for tip cases
+
+## Submission materials
+
+| File | Use |
+|------|-----|
+| `FORM_SUMMARY.md` | Paste into the written summary field |
+| `MarketTrust-Pitch-Deck.pdf` | Pitch deck upload |
+| `DEMO_SCRIPT.md` | Record the demo video |
 
 ## Notes
 
-- Seed sources point at public government portals — verify before production
+- Seed sources point at public government portals — verify before production use
 - Not a substitute for emergency services
